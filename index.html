@@ -3738,7 +3738,7 @@ function updProg(){const d=LESSONS.filter(l=>S.done[l.id]).length;$('#progTxt').
 
 /* ---- nav ---- */
 function buildNav(){
-  let h='<div class="lvfilter"><span>Level:</span>'+['all','A2','B1','B2'].map(v=>'<button data-lvf="'+v+'" class="'+(S.settings.level===v?'on':'')+'">'+(v==='all'?'All':v)+'</button>').join('')+'</div>';
+  let h='<div class="lvfilter"><span>Level:</span>'+['all','A2','B1','B2'].map(v=>'<button data-lvf="'+v+'" class="'+(S.settings.level===v?'on':'')+'">'+(v==='all'?'ALL':v)+'</button>').join('')+'</div>';
   h+='<button class="navlink" data-go="#/home">&#8962; Course home</button><button class="navlink" data-go="#/placement">&#127919; Placement quiz</button><button class="navlink" data-go="#/review">&#128257; Review<span class="badge" id="revBadge" style="display:none">0</span></button><button class="navlink" data-go="#/lab">&#127911; Practice lab</button><button class="navlink" data-go="#/glossary">&#128214; Canadian English glossary</button><button class="navlink" data-go="#/lang">&#127760; Tips for your language</button><button class="navlink" data-go="#/teach">&#127979; For teachers</button><button class="navlink" data-go="#/about">&#9432; About &amp; licence</button><a class="navlink coffee" href="https://buymeacoffee.com/a50443536g" target="_blank" rel="noopener noreferrer" title="Free and always will be. A coffee is appreciated — never required."><span aria-hidden="true">&#9749;</span> Buy me a coffee</a>';
   let part=null;
   COURSE.forEach((u,ui)=>{const d=u.lessons.filter(l=>S.done[l.id]).length;
