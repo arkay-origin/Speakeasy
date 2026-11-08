@@ -4,6 +4,7 @@
 const LIB={};
 OLD.forEach(u=>u.lessons.forEach(l=>{LIB[l.id]=l}));
 Object.keys(NEW).forEach(id=>{LIB[id]=Object.assign({id},NEW[id])});
+if(typeof AUDIO_NOTES!=='undefined')Object.keys(AUDIO_NOTES).forEach(id=>{if(LIB[id])LIB[id].body=AUDIO_NOTES[id]+LIB[id].body});
 
 const UNITS=[
  {num:'00',lv:'A2',title:'Start Here',desc:'How spoken English is different from written English, how this course works, and how to practise.',

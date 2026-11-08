@@ -3,7 +3,7 @@
 import re, pathlib
 here = pathlib.Path(__file__).parent
 FILES = ['sounds.js', 'g1.js', 'g2.js', 'g3.js', 'g4.js', 'l1_ru_from_old.js',
-         'n_pub1.js', 'n_pub2.js', 'tr.js', 'l1.js', 'teach.js', 'glossary.js', 'n_pub3.js', 'n_life.js', 'site.js', 'structure.js']
+         'n_pub1.js', 'n_pub2.js', 'tr.js', 'l1.js', 'teach.js', 'glossary.js', 'n_pub3.js', 'n_life.js', 'site.js', 'audio_notes.js', 'pron.js', 'structure.js']
 content = "const OLD=[];const NEW={};\n" + "\n".join((here/f).read_text() for f in FILES)
 out = (here/'shell.html').read_text().replace('/*__CONTENT__*/', content)
 dist = here.parent/'dist'; dist.mkdir(exist_ok=True)

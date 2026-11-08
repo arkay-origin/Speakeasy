@@ -270,7 +270,7 @@ html[data-l1=ru] .ru{display:inline}html[data-l1=ru] td.ru,html[data-l1=ru] th.r
 .gcount{font-size:13px;color:var(--faint);margin-bottom:6px}
 .gitem{border-bottom:1px solid var(--line);padding:12px 2px}
 .gitem .gt{font-size:17px;font-weight:700}
-.gitem .gc{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);margin-left:8px;white-space:nowrap}
+.gitem .gc{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);margin-left:8px;white-space:nowrap}
 .gitem .gm{margin:3px 0}
 .gitem .gex{color:var(--muted);font-size:15px}
 .gitem .gn{font-size:13.5px;color:var(--amber);margin-top:3px}
@@ -326,6 +326,11 @@ body.light .vrow .dot,body.light .vc i,body.light .sw{box-shadow:0 0 0 1px rgba(
 a.navlink{text-decoration:none}
 .navlink.coffee{color:var(--amber)}
 .navlink.coffee:hover{color:var(--amber);background:var(--amber-dim)}
+
+/* phonetic spellings */
+.pron{font-family:var(--mono);font-size:.74em;color:var(--faint);margin:0 6px 0 3px;white-space:nowrap;letter-spacing:0;font-weight:400}
+body.nopron .pron{display:none}
+@media print{#printArea .pron{color:#444}}
 
 /* modal + toast */
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-start;justify-content:center;z-index:50;padding:60px 16px;overflow-y:auto}
@@ -384,6 +389,9 @@ a.navlink{text-decoration:none}
   <div class="grp"><label>Normal speed: <span id="rateVal"></span></label><div class="row"><input type="range" id="rate" min="0.6" max="1.2" step="0.05"></div></div>
   <div class="grp"><label>Theme</label><div class="seg" id="themeSeg"><button data-theme="dark">Dark</button><button data-theme="light">Light (best for projectors)</button></div></div>
   <div class="grp"><label>Text size</label><div class="seg" id="sizeSeg"><button data-size="1">A</button><button data-size="1.15">A+</button><button data-size="1.3">A++</button><button data-size="1.5">A+++</button></div></div>
+  <div class="grp"><label>Phonetic spelling</label>
+    <label class="chk" style="cursor:pointer;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)"><input type="checkbox" id="pronChk"> Show the phonetic spelling (IPA) next to example words</label>
+  </div>
   <div class="grp"><label>Teacher mode</label>
     <label class="chk" style="cursor:pointer;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)"><input type="checkbox" id="teachChk"> Show teacher notes, answer keys and the “Print answer key” button on every lesson</label>
   </div>
@@ -406,7 +414,7 @@ a.navlink{text-decoration:none}
 (function(){
 "use strict";
 const KEY='speakeasy.public.v1';
-const DEF={done:{},ex:{},notes:{},best:{},settings:{rate:0.9,voice:'',lang:'',slow:false,level:'all',teacher:false,theme:'dark',size:1},rev:{},place:null,last:''};
+const DEF={done:{},ex:{},notes:{},best:{},settings:{rate:0.9,voice:'',lang:'',slow:false,level:'all',teacher:false,theme:'dark',size:1,pron:true},rev:{},place:null,last:''};
 let S;
 function load(){let d=null;try{d=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
   d=d&&typeof d==='object'?d:{};const o=JSON.parse(JSON.stringify(DEF));
@@ -435,11 +443,13 @@ function l1Sum(text){const L=curLang();if(!text||!L)return'';return '<p class="l
 const unitNum=(u,ui)=>u.num||String(ui).padStart(2,'0');
 
 /* ---- markup ---- */
+let NOPRON=0;
+function pronOf(spoken){if(NOPRON||typeof PRON==='undefined')return'';const k=spoken.toLowerCase().replace(/’/g,"'").replace(/[.,!?;:]+$/,'').trim();const p=PRON[k];return p?'<span class="pron" aria-hidden="true">/'+p+'/</span>':''}
 function strip(s){return s.replace(/<[^>]+>/g,'').replace(/[«»·↗↘]/g,'').replace(/‿/g,' ').replace(/\s+/g,' ').trim()}
 function stress(s){return s.replace(/«([^»]+)»/g,'<b class="st">$1</b>')}
 function fmt(h){if(!h)return'';
   h=h.replace(/\[\[([\s\S]+?)\]\]/g,(m,inner)=>{const p=inner.split('|');const disp=p[0];const spoken=strip(p[1]!==undefined?p[1]:disp);
-    return '<span class="say" role="button" tabindex="0" data-say="'+esc(spoken)+'">'+stress(disp)+'</span>'});
+    return '<span class="say" role="button" tabindex="0" data-say="'+esc(spoken)+'">'+stress(disp)+'</span>'+pronOf(spoken)});
   h=stress(h);
   h=h.replace(/⟨([^⟩|]+)(?:\|([^⟩]*))?⟩/g,(m,sym,ipa)=>{const k=sym.replace(/^\/|\/$/g,'');if(ipa===undefined)ipa=(typeof EPA_IPA!=='undefined'&&EPA_IPA[k])||'';
     return '<span class="epa">/'+k+'/'+(ipa?'<span class="ipa">/'+ipa+'/</span>':'')+'</span>'});
@@ -517,7 +527,8 @@ function markNav(route,lesson){
 function norm(s){return String(s).toLowerCase().replace(/[’‘`]/g,"'").replace(/[.!?,;]+$/,'').replace(/\s+/g,' ').trim()}
 const NONE=['','-','–','x','0','none','nothing','∅','no article'];
 function exKey(l,i){return l.id+':'+i}
-function renderEx(l,e,i){
+function renderEx(l,e,i){NOPRON++;try{return renderEx0(l,e,i)}finally{NOPRON--}}
+function renderEx0(l,e,i){
   const k=exKey(l,i);const st=S.ex[k];
   const tags={mc:'Choose',fill:'Type the answer',reveal:'Think, then check',stress:'Click the stressed syllable',pairs:'Listening — minimal pairs',say:'Listen, repeat, record',colour:'Which vowel sound?',dialogue:'Listen to the conversation'};
   let h='<div class="ex" data-k="'+k+'" data-i="'+i+'"><div class="tag">'+(e.tag||tags[e.type]||'')+'</div>';
@@ -653,7 +664,8 @@ function mountColourDrill(box,only,bestKey,rounds){
 
 /* ---- teacher + print ---- */
 function plain(h){return strip(fmt(h||''))}
-function keyItems(l){return (l.ex||[]).map((e,i)=>{const n=i+1;
+function keyItems(l){NOPRON++;try{return keyItems0(l)}finally{NOPRON--}}
+function keyItems0(l){return (l.ex||[]).map((e,i)=>{const n=i+1;
   if(e.type==='mc')return n+'. '+String.fromCharCode(97+e.a)+') '+plain(e.o[e.a]);
   if(e.type==='fill')return n+'. '+plain(e.show||e.a[0]);
   if(e.type==='reveal')return n+'. '+plain(e.a);
@@ -671,7 +683,8 @@ function teachHTML(l){const t=l.teach||{};
    (t.tip?'<h5>Watch for</h5><p>'+fmt(t.tip)+'</p>':'')+
    ((l.ex||[]).length?'<h5>Answer key</h5><ol style="list-style:none;margin-left:0">'+keyItems(l).map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>':'')+
    '</details>'}
-function wsItem(e,i){const n=i+1;let h='<div class="pq"><span class="n">'+n+'.</span>';
+function wsItem(e,i){NOPRON++;try{return wsItem0(e,i)}finally{NOPRON--}}
+function wsItem0(e,i){const n=i+1;let h='<div class="pq"><span class="n">'+n+'.</span>';
   const q=e.q?fmt(e.q):'';
   if(e.type==='mc'){h+=q+e.o.map((o,j)=>'<div class="po">'+String.fromCharCode(97+j)+') '+fmt(o)+'</div>').join('')}
   else if(e.type==='fill'){h+=q+'<div class="line"></div>'}
@@ -887,7 +900,7 @@ document.addEventListener('click',ev=>{
 window.addEventListener('hashchange',route);
 $('#menuBtn').onclick=()=>document.body.classList.toggle('nav-open');
 $('#scrim').onclick=()=>document.body.classList.remove('nav-open');
-function syncPills(){$('#teachChk').checked=!!S.settings.teacher;$('#slowBtn').classList.toggle('on',!!S.settings.slow);$('#slowBtn').setAttribute('aria-pressed',S.settings.slow?'true':'false');
+function syncPills(){$('#teachChk').checked=!!S.settings.teacher;$('#pronChk').checked=S.settings.pron!==false;document.body.classList.toggle('nopron',S.settings.pron===false);$('#slowBtn').classList.toggle('on',!!S.settings.slow);$('#slowBtn').setAttribute('aria-pressed',S.settings.slow?'true':'false');
   document.body.classList.toggle('light',S.settings.theme==='light');document.documentElement.style.setProperty('--zoom',S.settings.size||1);
   document.querySelectorAll('#themeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.theme===(S.settings.theme||'dark')));
   document.querySelectorAll('#sizeSeg button').forEach(b=>b.classList.toggle('on',+b.dataset.size===+(S.settings.size||1)));
@@ -900,6 +913,7 @@ $('#setClose').onclick=()=>$('#setModal').classList.remove('show');
 $('#setModal').onclick=e=>{if(e.target.id==='setModal')e.currentTarget.classList.remove('show')};
 $('#themeSeg').onclick=e=>{const b=e.target.closest('[data-theme]');if(!b)return;S.settings.theme=b.dataset.theme;save();syncPills()};
 $('#sizeSeg').onclick=e=>{const b=e.target.closest('[data-size]');if(!b)return;S.settings.size=+b.dataset.size;save();syncPills()};
+$('#pronChk').onchange=e=>{S.settings.pron=e.target.checked;save();syncPills()};
 $('#teachChk').onchange=e=>{S.settings.teacher=e.target.checked;save();syncPills();route()};
 $('#voiceSel').onchange=e=>{S.settings.voice=e.target.value;save()};
 $('#voiceTest').onclick=()=>speak('Hi there! Welcome to Canada. How’s it going?');

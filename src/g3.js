@@ -137,10 +137,17 @@ ru:'Особенности канадского произношения: «ка
 body:`
 <h3>1. Canadian raising: about, house, out</h3>
 <p>Before voiceless consonants (t, s, k, p, f), Canadians start the vowels in <i>out</i> and <i>ice</i> higher in the mouth:</p>
-<div class="tw"><table><tr><th>Raised (before voiceless)</th><th>Normal (before voiced)</th></tr>
-<tr><td>[[house]] (a home) &nbsp; [[out]] &nbsp; [[about]] &nbsp; [[mouth]]</td><td>[[to house]] (verb) &nbsp; [[loud]] &nbsp; [[town]] &nbsp; [[now]]</td></tr>
-<tr><td>[[ice]] &nbsp; [[right]] &nbsp; [[price]] &nbsp; [[write]] &nbsp; [[life]]</td><td>[[eyes]] &nbsp; [[ride]] &nbsp; [[prize]] &nbsp; [[time]] &nbsp; [[lives]]</td></tr></table></div>
-<p>Americans joke that Canadians say “aboot.” They don’t — it sounds more like “a-boat” said quickly, or “ab-uh-oot.” Your computer voice may or may not do this, depending on your device. Listen for it with real Canadians.</p>
+<div class="tw"><table><tr><th>Raised — before s, t, f, k, p</th><th>Normal — before z, d, v, or at the end</th></tr>
+<tr><td>[[house]]</td><td>[[houses]] (the s sounds like z)</td></tr>
+<tr><td>[[out]]</td><td>[[loud]]</td></tr>
+<tr><td>[[about]]</td><td>[[allowed]]</td></tr>
+<tr><td>[[knife]]</td><td>[[knives]]</td></tr>
+<tr><td>[[write]]</td><td>[[ride]]</td></tr>
+<tr><td>[[price]]</td><td>[[prize]]</td></tr>
+<tr><td>[[ice]]</td><td>[[eyes]]</td></tr></table></div>
+<p>The phonetic spellings show the same vowel symbol in both columns — dictionaries don’t mark raising. But a Canadian says the left column with the vowel starting higher in the mouth: <i>house</i> sounds a little like “hus” glided to “oo,” and <i>knife</i> a little like “nuh-eef” said quickly.</p>
+<p>Americans joke that Canadians say “aboot.” They don’t — it sounds more like “a-boat” said quickly, or “ab-uh-oot.”</p>
+<div class="box tip"><b>&#128264; About the audio</b><p>The computer voices in this course are usually American, so they <b>can’t</b> make Canadian raising — both columns will sound the same. Listen for it in real life: ask a Canadian friend or coworker to say <i>house</i> and <i>houses</i>, or <i>knife</i> and <i>knives</i>, and you’ll hear it.</p></div>
 <h3>2. cot = caught</h3>
 <p>In most of Canada, <i>cot</i> and <i>caught</i>, <i>Don</i> and <i>Dawn</i>, <i>stock</i> and <i>stalk</i> sound <b>exactly the same</b>. Good news: one fewer vowel to learn!</p>
 <h3>3. Sorry, tomorrow, borrow</h3>
