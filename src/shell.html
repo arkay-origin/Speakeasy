@@ -317,6 +317,12 @@ body.light .vrow .dot,body.light .vc i,body.light .sw{box-shadow:0 0 0 1px rgba(
 .report a{color:var(--faint)}
 @media print{#printArea .dl{display:block;padding:2pt 0}#printArea .dw{font-weight:700;margin-right:6pt}}
 
+/* support link (plain hyperlink — no widget, nothing loads from outside) */
+.support{padding:18px 22px 6px;border-top:1px solid var(--line);margin-top:10px}
+.support a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;color:var(--ink);text-decoration:none;background:var(--panel2)}
+.support a:hover{border-color:var(--amber);color:var(--amber)}
+.support .supnote{font-size:11.5px;color:var(--faint);margin-top:8px;line-height:1.45}
+
 /* modal + toast */
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-start;justify-content:center;z-index:50;padding:60px 16px;overflow-y:auto}
 .modal.show{display:flex}
@@ -351,6 +357,7 @@ body.light .vrow .dot,body.light .vc i,body.light .sw{box-shadow:0 0 0 1px rgba(
     </div>
     <div class="prog"><div class="lbl"><span>Progress</span><span id="progTxt">0 / 0</span></div><div class="bar"><div id="progBar"></div></div></div>
     <nav id="nav" aria-label="Course"></nav>
+    <div class="support"><a href="https://buymeacoffee.com/a50443536g" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">&#9749;</span> Buy me a coffee</a><div class="supnote">Free and always will be. If this course helped you or your learners, a coffee is appreciated — never required.</div></div>
   </aside>
   <div class="scrim" id="scrim"></div>
   <main>
