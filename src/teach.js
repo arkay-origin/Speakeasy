@@ -1,0 +1,110 @@
+/* ---------- TEACHER NOTES (shown in Teacher mode) ---------- */
+const T=(goal,warm,act,tip)=>({goal,warm,act,tip});
+const TEACH={
+ s1:T('Learners understand that spoken English has its own patterns (reductions, weak forms) that textbooks often skip.','Write a common question on the board in full (“What are you going to do?”). Ask learners how they think a Canadian says it. Then play the audio.','In pairs, learners list three things they find hardest about understanding Canadians. Collect them on the board and point to the units that cover each one.'),
+ s4:T('Learners can find their level, choose their language notes, use the audio and print worksheets.','Ask: “When do you use English outside class?” to set personal goals.','Walk the class through one lesson on a projector: level filter, language picker, audio, exercises, notes box, print button.','Make sure every learner can hear the audio on their own device; some phones need an English voice installed.'),
+ s2:T('Learners adopt a daily listen–repeat–record routine.','Ask how learners practised English before. Who has recorded themselves speaking?','Demonstrate shadowing with one sentence. Learners record themselves on their phones, listen back, then try again.','Some learners are shy about recording. Let them listen alone with earphones first.'),
+ x1:T('Learners stop predicting pronunciation from spelling and start checking sounds.','Write <i>though, through, tough, cough</i>. Ask learners to read them aloud before hearing them.','Give pairs 10 words with tricky spelling (<i>women, said, busy, colonel, receipt…</i>). They guess, then check with a dictionary’s audio.'),
+ x2:T('Learners feel voicing (buzz) and aspiration (puff of air), and avoid adding vowels to clusters.','Fingers on throats: “ssss–zzzz, ffff–vvvv”. Who feels the buzz?','Paper test in pairs: hold a strip of paper in front of the lips for <i>pin/bin, ten/den, coat/goat</i>. Then minimal-pair bingo with the pairs from the exercise.','Learners who add vowels before s-clusters (“estudent”) benefit from starting with a long hissing s: “sssss-tudent”.'),
+ p1:T('Learners produce /θ/ and /ð/ with the tongue visible between the teeth.','Mirror check: everyone says <i>think</i> and looks for their tongue.','Minimal-pair drill (think/sink, three/tree, they/day): teacher reads one word, learners hold up 1 or 2 fingers. Then learners take turns being the teacher.','Learners often over-correct by adding TH to s-words. Contrast <i>sink/think</i> both ways.'),
+ p2:T('Learners distinguish /w/ (rounded lips, no teeth) and /v/ (teeth on lip).','Ask learners to say <i>very well</i> slowly while watching a partner’s mouth.','Tongue twister race: “We visited Vancouver very early on Wednesday.” Pairs time each other and check lips/teeth.'),
+ p5:T('Learners make a soft breathy /h/ and a non-trilled, non-tapped Canadian /r/.','Fog a cold window (or imagine it): that breath is English H.','Growl practice for R (“errrr”) → <i>red, right, very</i>. Then contrast <i>right/light, rock/lock</i> using the listening drill.'),
+ k4:T('Learners recognize the flap T (<i>water</i>), the silent T (<i>twenty</i>) and the stopped T (<i>button</i>).','Ask learners how they say <i>water</i>. Play the Canadian version.','Learners listen to a short local radio clip or video and count the flap Ts they hear in 30 seconds.','Learners don’t need to produce the flap, but they must understand it.'),
+ p6:T('Learners pronounce final consonants and choose /s z ɪz/ and /t d ɪd/ correctly.','Say <i>bag</i> and <i>back</i>. Ask: what is the difference? (vowel length + final sound)','Sorting game: cards with plural nouns and past verbs; groups sort them into three columns by ending sound.','Common error: adding a syllable to every -ed (“work-ed”).'),
+ x5:T('Learners know the common silent letters, especially in high-frequency Canadian words (receipt, Wednesday).','Write <i>knife, listen, receipt, Wednesday</i>. Learners cross out the letters they think are silent.','Silent-letter hunt: learners find five words with silent letters in a flyer, menu or job posting.'),
+ x3:T('Learners know the 16 vowel keywords and can match common words to them.','Show the keyword pictures. Learners say each keyword after you.','Card sort: groups sort 30 word cards under the 16 keywords. Then play the “Which vowel?” drill in the Practice lab on the projector.','The keyword chart is original to this course. Feel free to print it for the classroom wall.'),
+ p3:T('Learners distinguish /iː/–/ɪ/ and /uː/–/ʊ/.','Hold up a picture of a sheep and a ship. Learners point as you say each word.','Minimal-pair listening (sheep/ship, leave/live, pool/pull), then partner dictation of short sentences: “Please leave / live here.”','Handle the “rude twin” pairs (sheet, beach, piece) matter-of-factly; adults appreciate the warning.'),
+ p4:T('Learners distinguish /æ/, /ɛ/, /ʌ/ and /ɑ/.','Mouth shapes: wide jaw for <i>cat</i>, half-open for <i>bet</i>, relaxed for <i>cut</i>, wide and back for <i>cot</i>.','Four corners: label the room’s corners CAT, BED, CUP, CLOCK. Read words; learners walk to the right corner.'),
+ x4:T('Learners glide in diphthongs and produce the r-vowels, especially /ɝ/.','Say <i>no</i> with and without the glide. Which sounds Canadian?','Rhyming pairs race: groups write as many rhymes as they can for <i>day, go, my, now, boy, her</i> in two minutes.','Watch <i>work/walk</i> and <i>word/ward</i> — common confusions with real consequences at work.'),
+ p7:T('Learners recognize Canadian raising, the cot–caught merger and local place-name pronunciations.','Ask: have you heard Americans joke that Canadians say “aboot”?','Listening: play a short Canadian news clip. Learners note any words that sound different from what they expected.'),
+ r1:T('Learners hear and produce word stress, and know the noun–verb and compound-noun patterns.','Say <i>computer</i> with the stress on each syllable. Which one is right? Why does it matter?','Stress clap: learners clap the rhythm of 20 everyday words (big clap on the stressed syllable). Then the noun/verb pairs in sentences.'),
+ x6:T('Learners use suffixes and word families to predict stress.','Write <i>photograph, photographer, photographic</i>. Learners guess the stress of each.','Groups build word families (educate → education → educational) and mark stress. Check with dictionary audio.'),
+ r3:T('Learners reduce unstressed vowels and function words to /ə/.','Write <i>banana</i>. Ask learners how many different vowel sounds they hear.','Weak-form dictation: read sentences at natural speed; learners write them. Discuss which words were hardest to hear.','<i>can/can’t</i> is a high-stakes pair — practise it in context.'),
+ x7:T('Learners recognize and use common elided pronunciations.','Say <i>comfortable</i> two ways. Which one do Canadians use?','Learners mark the disappearing syllable in a list, then say each word in a sentence to a partner.'),
+ r2:T('Learners stress content words and weaken function words.','Telegram game: write a long sentence; learners cross out every word that isn’t needed for meaning.','Pairs mark stressed words in short dialogues, then perform them. Others clap the stresses.'),
+ r4:T('Learners keep a stress-timed beat and divide speech into thought groups.','Clap a steady beat. Learners chant the four “cats” lines from the lesson with the same clap speed.','Jazz chant: groups write a 4-line chant about their week with 3 beats per line and perform it.'),
+ r5:T('Learners move sentence stress to show contrast or correction.','Say “I didn’t take your phone” five ways. Learners guess the hidden meaning each time.','Correction game: one learner says a wrong fact about a classmate (“You’re from Peru?”); the classmate corrects with contrastive stress (“No, I’m from <b>Chile</b>”).'),
+ k1:T('Learners use contractions naturally in speech.','Read a short paragraph without contractions. Ask how it sounds (formal, robotic).','Learners rewrite and read aloud a short formal dialogue using contractions.','Remind learners that <i>should of</i> is always wrong in writing.'),
+ k2:T('Learners understand <i>gonna, wanna, gotta, kinda</i> and use a few in casual speech.','Play or say: “Whaddaya wanna do?” Who understood?','Pairs make weekend plans using <i>gonna</i> and <i>wanna</i>, then report back.','<i>gonna</i> + noun is a common error (“I’m gonna the store”).'),
+ k3:T('Learners link consonant–vowel, same consonants and vowel–vowel, and recognize t+y/d+y mixing.','Write <i>pick it up</i>. Ask: where are the word boundaries when we speak?','Learners mark links (‿) in five short phrases, then say them to a partner without pauses.'),
+ k5:T('Learners recognize dropped H in unstressed pronouns and reduced <i>them, of, and</i>.','Say “Tell him I said hi” fast. How many words did you hear?','Dictation of 6 sentences with dropped H; learners write the full forms.'),
+ x9:T('Learners decode reduced question starts in fast speech.','Say “Djeetyet?” at lunchtime. Who understood?','Listening race: say reduced questions at natural speed; teams write the full form. Then teams create their own for others.','Production is optional; comprehension is the goal.'),
+ i1:T('Learners use a clear fall on statements, wh-questions and commands.','Hum the melody of “Where do you live?” and “I live in Toronto.”','Pairs interview each other with wh-questions, focusing on a clear fall at the end.'),
+ i2:T('Learners rise on yes/no questions and list items, and fall at the end of choices.','Say “Tea or coffee?” two ways. Ask what each one means.','Café role-play: servers offer choices with up–down intonation; customers choose.'),
+ i3:T('Learners form tag questions and understand rising vs falling tags and Canadian “eh?”.','Ask: “Nice weather today, isn’t it?” Learners reply.','Small-talk mingle: learners use three tag questions or “eh?” with different classmates.'),
+ i4:T('Learners use polite request forms and a warm, varied pitch.','Say “Thank you” flat, then warm. Ask which one sounds friendly.','Learners turn direct commands into polite requests, then role-play at a service counter.'),
+ x10:T('Learners hear emotion and sarcasm in tone of voice and adjust their own tone.','Say “That’s great” happily and sarcastically. Learners show thumbs up/down.','Emotion cards: learners say a neutral word (“Okay”, “Really”) with the emotion on their card; others guess.','Sarcasm can confuse newcomers; normalize asking “Are you joking?”'),
+ x11:T('Learners understand Canadian norms for smiling, eye contact, handshakes, personal space and punctuality.','Ask: what is polite in your culture when you meet someone new?','Handshake practice in pairs with introductions; then a discussion comparing customs. Keep it respectful — no culture is “wrong”.','Be sensitive to learners who don’t shake hands for religious or personal reasons; the lesson presents alternatives.'),
+ g1:T('Learners choose a/an, the or no article in common situations.','Show a picture and describe it: “There’s a dog. The dog is…”. Ask why the article changed.','Learners describe a picture to a partner, who draws it. Focus on first mention (a) vs second mention (the).'),
+ g3:T('Learners form questions with auxiliary inversion and use indirect questions politely.','Write “Where you live?” and ask what is missing.','Find someone who…: learners ask full questions to find classmates who match each line.'),
+ g4:T('Learners contrast present simple and continuous, and use -s with he/she/it.','Mime an action; learners say what you are doing now and what you usually do.','Routine interview: learners ask about a partner’s typical day, then report using he/she + -s.'),
+ g2:T('Learners use present perfect for experience and unfinished time, and past simple for finished time.','Ask: “Have you ever eaten poutine?” Follow up: “When did you try it?”','Have you ever…? mingle: learners ask, then follow up with past simple details.'),
+ g5:T('Learners choose will, going to and present continuous for the future.','The phone rings: “I’ll get it!” Ask why we use <i>will</i> here.','Diary planning: learners arrange a meeting with a partner using present continuous for fixed plans.'),
+ g7:T('Learners use at/on/in for time and place.','Write three columns AT / ON / IN. Learners place time words in them.','Learners write five true sentences about their week using at/on/in, then share.'),
+ x12:T('Learners notice and record collocations, and avoid translation traps from their first language.','Write “strong rain” and “heavy rain”. Which one sounds natural? Why?','Collocation matching cards (verb + noun). Then learners share one trap from their own language with the class.','Encourage learners to turn on their language notes — the traps are language-specific.'),
+ x13:T('Learners choose make, do, have, get or take with common nouns.','Write <i>___ a mistake / ___ homework</i>. Learners vote.','Five-column sort with 40 noun cards; then learners write sentences about their week using six of them.'),
+ x14:T('Learners use see/look/watch and say/tell/talk/speak correctly.','Ask: “What did you watch last night? Did you see anyone you know?”','Gap-fill relay: teams take turns filling sentences with the right verb.'),
+ g6:T('Learners understand and use common phrasal verbs, including separable ones with pronouns.','Mime <i>pick up, put on, turn off</i>. Learners guess.','Story chain: each learner adds a sentence to a story using one phrasal verb from the list.'),
+ x16:T('Learners use context to work out meaning and recognize homophones.','Write six sentences with <i>run</i>. Learners explain each meaning.','Homophone dictation: read sentences aloud; learners must choose the right spelling (to/too/two, their/there/they’re).'),
+ x15:T('Learners recognize common idioms used at work and in daily life.','Ask learners to share an idiom from their language and translate it word for word.','Idiom matching cards, then short role-plays at work using three idioms.'),
+ v3:T('Learners manage greetings and small talk with short, positive answers and follow-up questions.','Ask “How are you?” to several learners. Notice the answers.','Speed small-talk: two-minute conversations with different partners, each using a greeting, one topic and a polite ending.'),
+ x17:T('Learners know key vocabulary for job searching and the workplace.','Ask: what was your job before you came to Canada? What would you like to do here?','Role-play: calling in sick, asking to switch shifts, confirming instructions with a supervisor.','Some learners may be in difficult work situations; keep examples general.'),
+ v1:T('Learners know the vocabulary of language classes, training and credential recognition.','Ask: what is the difference between college and university in your country?','Learners make a short plan: one class or training program they want, and one question to ask a settlement worker.'),
+ v2:T('Learners understand common Canadian words, prices with tax, and tipping.','Show a $1 and $2 coin. Ask what Canadians call them.','Price calculation: learners compute the final price of three items with their province’s sales tax, and a restaurant bill with a 15% tip.'),
+ v5:T('Learners hear and say numbers, times, dates, money and phone numbers accurately.','Say 13 or 30 at random; learners write the number.','Information gap: pairs exchange appointment times, prices and phone numbers without showing their cards. Use the Practice lab number drills for homework.'),
+ v4:T('Learners use technology vocabulary and say symbols in email addresses and URLs.','Ask a learner to say their email address aloud. Notice how they say the symbols.','Pairs dictate email addresses and website addresses to each other and check.'),
+ v6:T('Learners understand common casual expressions, especially “I’m good” as a refusal.','Offer a learner a pen. Teach “I’m good, thanks” as a polite no.','Learners write a short dialogue using four expressions and perform it.','Slang changes fast; invite learners to bring expressions they heard this week.'),
+ c1:T('Learners ask for repetition, clarification and spelling without embarrassment.','Speak very fast on purpose. Wait for someone to ask you to repeat.','Pairs: one reads instructions quickly from a card; the other must use three clarification phrases before doing the task.'),
+ c2:T('Learners use fillers, reactions and follow-up questions to keep conversations going.','Tell a short piece of news. Model reactions (“No way!”, “Oh no.”).','News exchange: learners share a small piece of news; partners react and ask two follow-up questions.'),
+ c3:T('Learners give opinions, agree, and disagree politely using softeners.','Ask a light question (“Is winter the best season?”). Collect opinions.','Polite debate on an easy topic: each learner must use one softener when disagreeing.'),
+ c4:T('Learners handle common service situations: ordering, shopping, the phone and a medical appointment.','Ask: what was your most difficult phone call in English?','Role-play stations: café, store, phone call, clinic reception. Learners rotate.')
+};
+
+const TEACH_PAGE=`<div class="kicker">For teachers</div><h2 class="title">Using Speak Easy in class</h2>
+<p class="lede">A free, open course for adult ESL and LINC classes in Canada (CEFR A2–B2, roughly CLB 3–7). Use it on a projector, assign lessons for homework, or print worksheets.</p>
+<div class="body">
+<h3>Teacher mode</h3>
+<p>Turn on <b>&#9881; Settings → Teacher mode</b>. Every lesson then shows a <b>Teacher notes</b> panel with a goal, a warm-up, a class activity, things to watch for, and an <b>answer key</b>. You also get a <b>Print answer key</b> button.</p>
+<h3>Built-in tools for your class</h3>
+<ul><li><b>&#127919; Placement quiz</b> — 15 questions that suggest a starting level (A2, B1 or B2).</li>
+<li><b>&#10003; Unit tests</b> — a mixed test at the end of every unit, printable with an answer key.</li>
+<li><b>&#128257; Review</b> — exercises a learner got wrong come back after 1, 3, 7 and 21 days.</li>
+<li><b>&#127908; Record &amp; compare</b> — on speaking exercises, learners record themselves and hear the model followed by their own voice. Recordings never leave the device and are deleted when the page closes.</li>
+<li><b>Dialogues</b> — the Life in Canada unit has two-voice conversations with a “hide the text” option for listening practice.</li>
+<li><b>Light theme and text size</b> — in Settings. The light theme is much easier to read on a projector.</li></ul>
+<h3>Printing worksheets</h3>
+<p>Every lesson has a <b>&#128424; Print worksheet</b> button. It prints the lesson notes and all exercises in a clean, black-and-white layout with spaces for answers. Listening drills print as “teacher reads, learners circle” activities.</p>
+<h3>Levels</h3>
+<div class="tw"><table><tr><th>CEFR</th><th>Approx. CLB</th><th>Suggested units</th></tr>
+<tr><td>A2</td><td>3–4</td><td>00, 01–02 (sounds), 07 (grammar), 09 (everyday Canada), 10 (life in Canada), 11</td></tr>
+<tr><td>B1</td><td>5–6</td><td>03–06 (stress, rhythm, linking, voice), 08 (expressions)</td></tr>
+<tr><td>B2</td><td>7+</td><td>Fast speech, focus stress, idioms, slang</td></tr></table></div>
+<p>CLB equivalents are approximate; use your own assessment.</p>
+<h3>Learners’ languages</h3>
+<p>Learners can choose Arabic, Mandarin, French, Spanish, Punjabi, Tagalog or Russian. Each lesson then shows a one-line summary in that language, and key lessons show tips for speakers of that language. These notes are drafts — if you speak one of these languages and see a mistake, please report it so it can be fixed for everyone.</p>
+<h3>Audio</h3>
+<p>Audio uses the device’s built-in text-to-speech, so the course works offline and needs no downloads. Quality depends on the device: Chrome/Edge on Windows, Safari on iPhone and Android with Google’s English voices all work well. Computer voices are good for sounds and words but imperfect for emotion and rhythm — your own voice is still the best model.</p>
+<h3>Privacy</h3>
+<p>No accounts, no tracking, no data collection. Progress is stored only in each learner’s browser. This makes the course easy to use with any group and on shared computers (use <b>Settings → Erase all progress</b> at the end of a session on a shared machine).</p>
+<h3>The vowel chart</h3>
+<p>The course uses its own picture keywords for the vowel sounds of Canadian English:</p>
+<div data-widget="vowelchart"></div>
+<h3>Canadian English glossary</h3>
+<p>The <a href="#/glossary">glossary</a> lists Canadian words, Canada/UK/US differences, figurative expressions, winter, food and civic vocabulary. Filter by category and press <b>Print this list</b> for a handout.</p>
+<h3>Copy, adapt, share</h3>
+<p>All lesson content is licensed <b>CC BY 4.0</b>: you may copy, print, translate and adapt it for any purpose, including in your own materials, as long as you credit “Speak Easy — Spoken Canadian English”.</p>
+</div>`;
+
+const ABOUT_PAGE=`<div class="kicker">About</div><h2 class="title">About Speak Easy</h2>
+<div class="body">
+<p>Speak Easy is a free course in spoken Canadian English for adult newcomers. It was made as a thank-you to the ESL teachers, LINC instructors and settlement workers across Canada who help newcomers every day.</p>
+<h3>Licence</h3>
+<ul><li><b>Lesson content</b> (text, exercises, the vowel keyword chart, teacher notes): Creative Commons Attribution 4.0 International (<b>CC BY 4.0</b>). You may share and adapt it for any purpose, with credit.</li>
+<li><b>Software</b> (the app itself): MIT Licence.</li></ul>
+<h3>Privacy</h3>
+<p>This course collects no data. There are no accounts, cookies, analytics or ads. Everything you do is saved only in your own browser.</p>
+<h3>Accuracy</h3>
+<p>The content was written carefully, but mistakes are possible — especially in the translated notes. If you find a mistake, use the “Report a problem” link at the bottom of any lesson, or tell the teacher or organization that shared this course with you.</p>
+<h3>Version</h3>
+<p>Public edition 0.1 (draft for review).</p>
+</div>`;
