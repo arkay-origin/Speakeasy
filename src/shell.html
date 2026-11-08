@@ -323,6 +323,10 @@ body.light .vrow .dot,body.light .vc i,body.light .sw{box-shadow:0 0 0 1px rgba(
 .support a:hover{border-color:var(--amber);color:var(--amber)}
 .support .supnote{font-size:11.5px;color:var(--faint);margin-top:8px;line-height:1.45}
 
+a.navlink{text-decoration:none}
+.navlink.coffee{color:var(--amber)}
+.navlink.coffee:hover{color:var(--amber);background:var(--amber-dim)}
+
 /* modal + toast */
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-start;justify-content:center;z-index:50;padding:60px 16px;overflow-y:auto}
 .modal.show{display:flex}
@@ -357,7 +361,6 @@ body.light .vrow .dot,body.light .vc i,body.light .sw{box-shadow:0 0 0 1px rgba(
     </div>
     <div class="prog"><div class="lbl"><span>Progress</span><span id="progTxt">0 / 0</span></div><div class="bar"><div id="progBar"></div></div></div>
     <nav id="nav" aria-label="Course"></nav>
-    <div class="support"><a href="https://buymeacoffee.com/a50443536g" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">&#9749;</span> Buy me a coffee</a><div class="supnote">Free and always will be. If this course helped you or your learners, a coffee is appreciated — never required.</div></div>
   </aside>
   <div class="scrim" id="scrim"></div>
   <main>
@@ -497,7 +500,7 @@ function updProg(){const d=LESSONS.filter(l=>S.done[l.id]).length;$('#progTxt').
 /* ---- nav ---- */
 function buildNav(){
   let h='<div class="lvfilter"><span>Level:</span>'+['all','A2','B1','B2'].map(v=>'<button data-lvf="'+v+'" class="'+(S.settings.level===v?'on':'')+'">'+(v==='all'?'All':v)+'</button>').join('')+'</div>';
-  h+='<button class="navlink" data-go="#/home">&#8962; Course home</button><button class="navlink" data-go="#/placement">&#127919; Placement quiz</button><button class="navlink" data-go="#/review">&#128257; Review<span class="badge" id="revBadge" style="display:none">0</span></button><button class="navlink" data-go="#/lab">&#127911; Practice lab</button><button class="navlink" data-go="#/glossary">&#128214; Canadian English glossary</button><button class="navlink" data-go="#/lang">&#127760; Tips for your language</button><button class="navlink" data-go="#/teach">&#127979; For teachers</button><button class="navlink" data-go="#/about">&#9432; About &amp; licence</button>';
+  h+='<button class="navlink" data-go="#/home">&#8962; Course home</button><button class="navlink" data-go="#/placement">&#127919; Placement quiz</button><button class="navlink" data-go="#/review">&#128257; Review<span class="badge" id="revBadge" style="display:none">0</span></button><button class="navlink" data-go="#/lab">&#127911; Practice lab</button><button class="navlink" data-go="#/glossary">&#128214; Canadian English glossary</button><button class="navlink" data-go="#/lang">&#127760; Tips for your language</button><button class="navlink" data-go="#/teach">&#127979; For teachers</button><button class="navlink" data-go="#/about">&#9432; About &amp; licence</button><a class="navlink coffee" href="https://buymeacoffee.com/a50443536g" target="_blank" rel="noopener noreferrer" title="Free and always will be. A coffee is appreciated — never required."><span aria-hidden="true">&#9749;</span> Buy me a coffee</a>';
   let part=null;
   COURSE.forEach((u,ui)=>{const d=u.lessons.filter(l=>S.done[l.id]).length;
     if(u.part&&u.part!==part){part=u.part;h+='<div class="part">'+esc(part)+'</div>'}
