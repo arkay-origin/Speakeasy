@@ -1,6 +1,6 @@
 // Speak Easy service worker: caches the app so it works offline after the first visit.
 // Bump VERSION whenever index.html changes so learners get the update.
-const VERSION = 'speak-easy-v0.4';
+const VERSION = 'speak-easy-v0.5';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
