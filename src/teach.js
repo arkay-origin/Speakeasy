@@ -103,8 +103,6 @@ const ABOUT_PAGE=`<div class="kicker">About</div><h2 class="title">About Speak E
 <li><b>Software</b> (the app itself): MIT Licence.</li></ul>
 <h3>Privacy</h3>
 <p>This course collects no data. There are no accounts, cookies, analytics or ads. Everything you do is saved only in your own browser.</p>
-<h3>Support</h3>
-<p>Speak Easy is free and always will be. If it helped you or your learners, you can <a href="https://buymeacoffee.com/a50443536g" target="_blank" rel="noopener noreferrer">buy me a coffee</a> — entirely optional. It’s a plain link: nothing from outside is loaded into this page, and nothing about your visit is reported anywhere.</p>
 <h3>Accuracy</h3>
 <p>The content was written carefully, but mistakes are possible — especially in the translated notes. If you find a mistake, use the “Report a problem” link at the bottom of any lesson, or tell the teacher or organization that shared this course with you.</p>
 <h3>Version</h3>

@@ -30,12 +30,6 @@ No accounts, cookies, analytics, ads or servers. Progress is saved only in the l
 - **Lesson content** (text, exercises, vowel keyword chart, glossary, teacher notes, translations): [CC BY 4.0](LICENSE-CONTENT.md) — share and adapt for any purpose, with credit.
 - **Software:** [MIT](LICENSE).
 
-## Support
-
-Speak Easy is free and always will be. If it helped you or your learners, you can [buy me a coffee](https://buymeacoffee.com/a50443536g). Entirely optional.
-
-The donation link is a plain hyperlink. No third-party widget or script is embedded, so nothing loads from outside the course and nothing about your visit is reported anywhere.
-
 ## Contributing
 
 Found a mistake? Speak one of the course languages? See [CONTRIBUTING.md](CONTRIBUTING.md).
